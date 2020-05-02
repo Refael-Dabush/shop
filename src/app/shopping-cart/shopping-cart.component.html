@@ -1,0 +1,58 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!--Symbol Column -->
+        <ng-container matColumnDef="imageUrl">
+            <th mat-header-cell *matHeaderCellDef> Image </th>
+            <td mat-cell *matCellDef="let element"> <img class="img-responsive" [src]="element.imageUrl"
+                height="50" width="100"> </td>
+        </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity</th>
+        <td mat-cell *matCellDef="let element"> <select id = "qountityBoxid" name="quantityBox" size="1">
+          <option value="option1">1</option>
+          <option value="option2">2</option>
+          <option value="Option3">3</option>
+          <option value="Option3">4</option>
+          <option value="Option3">5</option>
+          <option value="Option3">6</option>
+          <option value="Option3">7</option>
+          <option value="Option3">8</option>
+          <option value="Option3">9</option>
+          <option value="Option3">10</option>
+          </select></td>
+      </ng-container>
+
+
+      <ng-container  matColumnDef="button" >
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td  mat-cell *matCellDef="let element"><button type="button" (click)= "delectFromCart(element.prodId)" style="background-color:red">Delet from cart</button></td>
+      </ng-container>
+      
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">{{element.price}} {{numm}}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+    <div class="cart-total">
+      <strong class="cart-total-title">Total: </strong>
+      <span class="cart-total-price" id="tt"></span>
+  </div>
